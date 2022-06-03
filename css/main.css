@@ -1,0 +1,38 @@
+:root {
+    --new_white: #e6e2da;
+    --new_orange: #f18805;
+    --new_scarlet: #d95d39;
+    --scarlet_hover: #b64f32;
+    --new_navy: #202c59;
+    --new_pink: #d699bf;
+}
+
+body {
+    background-color: var(--new_navy);
+    color: var(--new_white)
+}
+
+:active {
+    color: var(--new_white)
+}
+
+.btn-primary {
+    background-color: var(--new_scarlet);
+    border-color: var(--new_scarlet);
+}
+
+.btn-primary:hover {
+    background-color: var(--scarlet_hover);
+    border-color: var(--scarlet_hover);
+}
+
+.btn-primary:focus {
+    background-color: var(--scarlet_hover);
+    border-color: var(--scarlet_hover);
+}
+
+.btn-secondary {
+    color: var(--new_navy);
+    background-color: var(--new_scarlet);
+    border-color: var(--new_scarlet);
+}
