@@ -1,17 +1,25 @@
 :root {
     --background: #202c59;
+    --nav-background: #05154d;
+
     /* TEXT COLORS */
     --text_color: #e6e2da;
     --link_visited: #f18805;
     --link_click: #a55d04;
 
     /* FUNCTIONAL COLORS */
+
+    /* CANCEL */
     --cancel: #c25132;
     --cancel_hover: #a0452c;
     --cancel_click: #8f3921;
+
+    /* PRIMARY */
     --primary: #c088ab;
     --primary_hover: #a77594;
     --primary_click: #8a5575;
+
+    /* CONFIRM */
     --confirm: #009247;
     --confirm_hover: #00793a;
     --confirm_click: #006330;
@@ -61,6 +69,8 @@ a:active {
 
 /* NAVBAR CSS */
 ul#nav {
+    padding: 0 1rem;
+    background-color: var(--nav-background);
     display: block;
     list-style-type: none;
     display: flex;
@@ -70,17 +80,37 @@ ul#nav {
 ul#nav > li {
     display: inline-block;
     text-align: center;
-    padding: 0 0.5rem;
+    /* padding: 0 0.5rem; */
     display: flex;
 }
 
+ul#nav > li.whitespace {
+    flex-grow: 1;
+}
+
 ul#nav > li > a {
-    
+    color:var(--text_color);
+    text-decoration: none;
+    padding: 0 0.5rem;
+}
+
+ul#nav > li > a:hover {
+    background-color: var(--confirm);
+}
+
+ul#nav > li > a:active {
+    background-color: var(--confirm_click);
+}
+
+/* OVERWRITING ANCHOR CSS WHEN IN NAV */
+ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
+    color: var(--text_color);
 }
 
 /* BUTTON CSS */
 
 .button {
+    white-space: nowrap;
     display: inline-block;
     background-color: transparent;
     border-width: 0;
