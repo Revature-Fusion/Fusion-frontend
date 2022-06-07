@@ -1,0 +1,282 @@
+:root {
+    --background: #202c59;
+    --nav-background: #05154d;
+
+    /* TEXT COLORS */
+    --text_color: #e6e2da;
+    --link_visited: #f18805;
+    --link_click: #a55d04;
+
+    /* FUNCTIONAL COLORS */
+
+    /* CANCEL */
+    --cancel: #c25132;
+    --cancel_hover: #a0452c;
+    --cancel_click: #8f3921;
+
+    /* PRIMARY */
+    --primary: #c088ab;
+    --primary_hover: #a77594;
+    --primary_click: #8a5575;
+
+    /* CONFIRM */
+    --confirm: #009247;
+    --confirm_hover: #00793a;
+    --confirm_click: #006330;
+}
+
+
+/* STANDARD HTML OVERRIDES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text_color);
+    font-family: sans-serif;
+    font-size: 16px;
+}
+main, header {
+    margin: 1rem 5rem;
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--link_click);
+}
+
+a:visited {
+    color: var(--link_visited);
+}
+
+a:active {
+    color: var(--cancel);
+}
+
+
+/* UTILITY CSS */
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+    /* MARGIN */
+.m {
+    margin: 1rem !important;
+}
+
+.m-x { 
+    /* Adds margin on X axis */
+    margin: 0 1rem !important;
+}
+
+.m-y { 
+    /* Adds margin on Y axis */
+    margin: 1rem 0 !important;
+}
+
+    /* PADDING */
+.p {
+    padding: 1rem !important;
+}
+
+.p-x { 
+    /* Adds padding on X axis */
+    padding: 0 1rem !important;
+}
+
+.p-y { 
+    /* Adds padding on Y axis */
+    padding: 1rem 0 !important;
+}
+
+
+/* FLEX CSS */
+.flex {
+    display: flex !important;
+}
+
+.flex-no-wrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+.flex-row-r {
+    flex-direction: row-reverse !important;
+}
+
+.flex-col {
+    flex-direction: column !important;
+}
+
+.flex-col-r {
+    flex-direction: column-reverse !important;
+}
+
+.flex-just-s {
+    justify-content: flex-start;
+}
+
+.flex-just-c {
+    justify-content: center;
+}
+
+.flex-just-e {
+    justify-content: flex-end;
+}
+
+.flex-align-s {
+    align-items: flex-start !important;
+}
+
+.flex-align-c {
+    align-items: center !important;
+}
+
+.flex-align-e {
+    align-items: flex-end !important;
+}
+
+
+/* NAVBAR CSS */
+ul#nav {
+    padding: 0 1rem;
+    background-color: var(--nav-background);
+    display: block;
+    list-style-type: none;
+    display: flex;
+    line-height: 3.5rem;
+}
+
+ul#nav > li {
+    display: inline-block;
+    text-align: center;
+    /* padding: 0 0.5rem; */
+    display: flex;
+}
+
+ul#nav > li.whitespace {
+    flex-grow: 1;
+}
+
+ul#nav > li > a {
+    color:var(--text_color);
+    text-decoration: none;
+    padding: 0 0.5rem;
+}
+
+ul#nav > li > a:hover {
+    background-color: var(--confirm);
+}
+
+ul#nav > li > a:active {
+    background-color: var(--confirm_click);
+}
+
+
+/* OVERWRITING ANCHOR CSS WHEN IN NAV */
+ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
+    color: var(--text_color);
+}
+
+/* BUTTON CSS */
+.button {
+    white-space: nowrap;
+    display: inline-block;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--text_color);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    line-height: 1rem;
+}
+
+/* a.button:visited, a.button:hover, a.button:active {
+    color: var(--text_color);
+} */
+
+.button-primary, a.button-primary { 
+    color: var(--text_color);
+    background-color: var(--primary);
+}
+  
+.button-primary:hover {
+    background-color: var(--primary_hover);
+}
+
+.button-primary:active {
+    background-color: var(--primary_click);
+}
+
+.button-confirm, a.button-confirm {
+    color: var(--text_color);
+    background-color: var(--confirm);
+}
+
+.button-confirm:hover {
+    background-color: var(--confirm_hover);
+}
+
+.button-confirm:active {
+    background-color: var(--confirm_click);
+}
+
+.button-cancel, a.button-cancel {
+    color: var(--text_color);
+    background-color: var(--cancel);
+}
+
+.button-cancel:hover {
+    background-color: var(--cancel_hover);
+}
+
+.button-cancel:active {
+    background-color: var(--cancel_click);
+}
+
+
+/* TABLE CSS */
+.table {
+    display: block;
+    border-collapse: collapse;
+}
+
+.table > thead {
+    background-color: var(--nav-background);
+    border: 2px solid var(--text_color);
+}
+
+.table > tbody {
+    border: 2px solid var(--text_color);
+    border-top: 0;
+}
+
+.table > tbody > tr:nth-child(even) {
+    background-color: var(--nav-background);
+}
+
+.table th, table td {
+    padding: 0.2rem 1rem;
+}
