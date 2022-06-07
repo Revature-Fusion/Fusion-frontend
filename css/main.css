@@ -132,9 +132,9 @@ ul#nav > li > a {
 }
 
 .button-cancel:hover {
-    border-color: var(--cancel_hover);
+    background-color: var(--cancel_hover);
 }
 
 .button-cancel:active {
-    border-color: var(--cancel_click);
+    background-color: var(--cancel_click);
 }
