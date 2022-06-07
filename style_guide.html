@@ -13,11 +13,12 @@
   <body>
       <nav>
           <ul id="nav">
-              <li><a href="#">Nav Link</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li class="whitespace"> <!-- TAKE UP ALL REMAINING SPACE --> </li>
-              <li><a href="#"><i class="bi bi-cart-fill"></i> Cart</a></li>
-              <li><a href="#"><i class="bi bi-person-fill"></i> Login</a></li>
+            <!-- normally the <li> are added via JS, but they are written here for reference -->
+            <li><a href="#">Nav Link</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li class="whitespace"> <!-- TAKE UP ALL REMAINING SPACE --> </li>
+            <li><a href="#"><i class="bi bi-cart-fill"></i> Cart</a></li>
+            <li><a href="#"><i class="bi bi-person-fill"></i> Login</a></li>
           </ul>
       </nav>
       <header class="container">
@@ -40,8 +41,34 @@
             <a href="google.com">Vanilla Link</a>
           </div>
           
+          <table class="table">
+            <thead>
+              <!-- ONLY ONE ROW IN THEAD -->
+              <tr>
+                <th>Name</th>
+                <th>Order Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>1111</td>
+              </tr>
+              <tr>
+                <td>Tavish DeGroot</td>
+                <td>2222</td>
+              </tr>
+              <tr>
+                <td class="text-right">right align</td>
+                <td class="text-center">center</td>
+              </tr>
+            </tbody>
+          </table>
 
       </main>
     
   </body>
+
+  <!-- EXTERNAL SCRIPTS -->
+  <script src="js/nav.js"></script>
 </html>
