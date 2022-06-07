@@ -1,14 +1,20 @@
 :root {
-    --new_white: #e6e2da;
-    --new_orange: #f18805;
-    --orange_click: #a55d04;
-    --new_scarlet: #d95d39;
-    --scarlet_hover: #b64f32;
-    --scarlet_click: #a84226;
-    --new_navy: #202c59;
-    --new_pink: #d699bf;
-    --pink_hover: #b882a3;
-    --pink_click: #a1698c;
+    --background: #202c59;
+    /* TEXT COLORS */
+    --text_color: #e6e2da;
+    --link_visited: #f18805;
+    --link_click: #a55d04;
+
+    /* FUNCTIONAL COLORS */
+    --cancel: #c25132;
+    --cancel_hover: #a0452c;
+    --cancel_click: #8f3921;
+    --primary: #c088ab;
+    --primary_hover: #a77594;
+    --primary_click: #8a5575;
+    --confirm: #009247;
+    --confirm_hover: #00793a;
+    --confirm_click: #006330;
 }
 
 /* STANDARD HTML OVERRIDES */
@@ -19,8 +25,8 @@
 }
 
 body {
-    background-color: var(--new_navy);
-    color: var(--new_white);
+    background-color: var(--background);
+    color: var(--text_color);
     font-family: sans-serif;
     font-size: 16px;
 }
@@ -29,19 +35,19 @@ main, header {
 }
 
 a {
-    color: var(--new_pink);
+    color: var(--primary);
 }
 
 a:hover {
-    color: var(--orange_click);
+    color: var(--link_click);
 }
 
 a:visited {
-    color: var(--new_orange);
+    color: var(--link_visited);
 }
 
 a:active {
-    color: var(--new_scarlet);
+    color: var(--cancel);
 }
 
 /* FLEX CSS */
@@ -65,6 +71,11 @@ ul#nav > li {
     display: inline-block;
     text-align: center;
     padding: 0 0.5rem;
+    display: flex;
+}
+
+ul#nav > li > a {
+    
 }
 
 /* BUTTON CSS */
@@ -72,8 +83,8 @@ ul#nav > li {
 .button {
     display: inline-block;
     background-color: transparent;
-    border: 2px solid black;
-    color: var(--new_white);
+    border-width: 0;
+    color: var(--text_color);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -85,34 +96,45 @@ ul#nav > li {
     line-height: 1rem;
 }
 
-a.button:visited, a.button:hover, a.button:active {
-    color: var(--new_white);
-}
+/* a.button:visited, a.button:hover, a.button:active {
+    color: var(--text_color);
+} */
 
-.button-primary { 
-    border-color: var(--new_pink);
+.button-primary, a.button-primary { 
+    color: var(--text_color);
+    background-color: var(--primary);
 }
   
 .button-primary:hover {
-    background-color: var(--pink_hover);
-    border-color: var(--pink_hover);
+    background-color: var(--primary_hover);
 }
 
 .button-primary:active {
-    background-color: var(--pink_click);
-    border-color: var(--pink_click);
+    background-color: var(--primary_click);
 }
 
-.button-cancel {
-    border-color: var(--new_scarlet);
+.button-confirm, a.button-confirm {
+    color: var(--text_color);
+    background-color: var(--confirm);
+}
+
+.button-confirm:hover {
+    background-color: var(--confirm_hover);
+}
+
+.button-confirm:active {
+    background-color: var(--confirm_click);
+}
+
+.button-cancel, a.button-cancel {
+    color: var(--text_color);
+    background-color: var(--cancel);
 }
 
 .button-cancel:hover {
-    border-color: var(--scarlet_hover);
-    background-color: var(--scarlet_hover);
+    border-color: var(--cancel_hover);
 }
 
 .button-cancel:active {
-    border-color: var(--scarlet_click);
-    background-color: var(--scarlet_click);
+    border-color: var(--cancel_click);
 }
