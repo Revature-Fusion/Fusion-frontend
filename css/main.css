@@ -76,11 +76,51 @@ a:active {
 
 /* FLEX CSS */
 .flex {
-    display: flex;
+    display: flex !important;
 }
 
-.flex-wrap {
-    flex-wrap: nowrap;
+.flex-no-wrap {
+    flex-wrap: nowrap !important;
+}
+
+.flex-row {
+    flex-direction: row !important;
+}
+
+.flex-row-r {
+    flex-direction: row-reverse !important;
+}
+
+.flex-col {
+    flex-direction: column !important;
+}
+
+.flex-col-r {
+    flex-direction: column-reverse !important;
+}
+
+.flex-just-s {
+    justify-content: flex-start;
+}
+
+.flex-just-c {
+    justify-content: center;
+}
+
+.flex-just-e {
+    justify-content: flex-end;
+}
+
+.flex-align-s {
+    align-items: flex-start !important;
+}
+
+.flex-align-c {
+    align-items: center !important;
+}
+
+.flex-align-e {
+    align-items: flex-end !important;
 }
 
 
