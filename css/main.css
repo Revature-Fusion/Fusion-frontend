@@ -73,6 +73,36 @@ a:active {
     text-align: left !important;
 }
 
+    /* MARGIN */
+.m {
+    margin: 1rem !important;
+}
+
+.m-x { 
+    /* Adds margin on X axis */
+    margin: 0 1rem !important;
+}
+
+.m-y { 
+    /* Adds margin on Y axis */
+    margin: 1rem 0 !important;
+}
+
+    /* PADDING */
+.p {
+    padding: 1rem !important;
+}
+
+.p-x { 
+    /* Adds padding on X axis */
+    padding: 0 1rem !important;
+}
+
+.p-y { 
+    /* Adds padding on Y axis */
+    padding: 1rem 0 !important;
+}
+
 
 /* FLEX CSS */
 .flex {
