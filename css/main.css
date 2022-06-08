@@ -282,8 +282,15 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
 }
 
 .cart-table {
-    padding: .2rem 1rem;
+    padding: .2rem .5rem;
     text-align: justify;
-    justify-content: space-around;
-    margin-top: 3%;
+    font-size: 2rem;
+}
+
+.cart-button {
+    text-align: center;
+}
+
+.cart-input {
+    font-size: 1.5rem;
 }

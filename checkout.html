@@ -19,37 +19,39 @@
           <li><a href="#"><i class="bi bi-person-fill"></i> Login</a></li>
         </ul>
     </nav>
-    <div class="cart-div">
+    <div class="flex flex-col flex-align-c">
         <table class="cart-table">
             <tr>
                 <td>First Name</td>
-                <td><input id="fName" type="text"></td>
+                <td><input class="cart-input" id="fName" type="text"></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input id="lName" type="text"></td>
+                <td><input class="cart-input" id="lName" type="text"></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td><input id="email" type="text" ></td>
+                <td><input class="cart-input" id="email" type="text" ></td>
             </tr>
             <tr>
                 <td>Address</td>
-                <td><input id="address" type="text"></td>
+                <td><input class="cart-input" id="address" type="text"></td>
             </tr>
             <tr>
                 <td>City</td>
-                <td><input id="city" type="text"></td>
+                <td><input class="cart-input" id="city" type="text"></td>
             </tr>
             <tr>
                 <td>Postal Code</td>
-                <td><input id="pCode" type="text"></td>
+                <td><input class="cart-input" id="pCode" type="text"></td>
             </tr>
             <tr>
                 <td>Country</td>
-                <td><input id="country" type="text"></td>
+                <td><input class="cart-input" id="country" type="text"></td>
             </tr>
         </table>
+    </div>
+    <div class="cart-button">
         <button class="button button-confirm" onclick="">Checkout</button>
         <button class="button button-cancel" onclick="location.href=''">Continue Shopping</button>
     </div>

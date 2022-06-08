@@ -19,6 +19,19 @@
           <li><a href="#"><i class="bi bi-person-fill"></i> Login</a></li>
         </ul>
     </nav>
+    <div onload="parseOrder()">
+        <a id="userCart"></a>
+    </div>
+    <div class="total-div">
+        <table>
+            <th>Cart Total</th>
+            <tr>
+                <td>Total</td>
+                <td><a id="orderTotal"></a></td>
+            </tr>
+        </table>
+    </div>
+    <button class="button button-confirm" onclick="location.href='checkout.html'">Proceed to Checkout</button>
     
 </body>
 </html>
