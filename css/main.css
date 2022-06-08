@@ -280,3 +280,10 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
 .table th, table td {
     padding: 0.2rem 1rem;
 }
+
+.cart-table {
+    padding: .2rem 1rem;
+    text-align: justify;
+    justify-content: space-around;
+    margin-top: 3%;
+}
