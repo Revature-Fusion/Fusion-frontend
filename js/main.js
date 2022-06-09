@@ -26,7 +26,7 @@ async function parseOrder() {
 }
 
 async function checkoutParse() {
-    const user = sessionStorage.getItem('')
+    const user = sessionStorage.getItem('');
     if (user) {
         document.getElementById('fName').innerHTML = user.firstName;
         document.getElementById('lName').innerHTML = user.lastName;
@@ -40,6 +40,7 @@ async function checkoutParse() {
         const httpurl = `http://localhost:7000/address/user/${userId}`;
         const httpResponse = await fetch(httpurl);
         const address = await httpResponse.json();
+        sessionStorage.setItem('userAddress', address)
         if (address && address.length > 0) {
             document.getElementById('adr').innerHTML = address.address;
             document.getElementById('city').innerHTML = address.city;
@@ -47,4 +48,66 @@ async function checkoutParse() {
             document.getElementById('ctr').innerHTML = address.country;
         }          
     }
+}
+
+async function checkout() {
+    const address = sessionStorage.getItem('userAddress');
+    const user = sessionStorage.getItem('');
+    const orderList = sessionStorage.getItem('')
+    if (!address || address.length == 0) {
+        const userAddressData = {
+            u_id: user.userId,
+            address: document.getElementById('adr').innerHTML,
+            city: document.getElementById('city').innerHTML,
+            postal_code: document.getElementById('pCode').innerHTML,
+            country: document.getElementById('ctr').innerHTML
+        };
+        
+        const userAddressOption = {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(userAddressData)
+        };
+        const userAddressResponse = await fetch("http://localhost:7000/address/",userAddressOption);
+        const newAddress = await userAddressResponse.json();
+        sessionStorage.setItem('userAddress', newAddress);
+    };
+
+    const orderData = {
+        uID: 2,
+        dateOfPurchase: new Date().getTime()*1000,
+        aID: address.a_id
+    };
+    const orderOption = {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData)
+    };
+
+    const orderResponse = await fetch("http://localhost:7000/order/", orderOption);
+    const newOrder = await orderResponse.json();
+
+    orderList.forEach(element=>{
+        const orderDetailData =  {
+            oID: newOrder.oID,
+            pID: 44,
+            quantity: 1
+        };
+
+        const orderDetailOption = {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(orderDetailData)
+        };
+        const orderDetailResponse = await fetch('http://localhost:7000//orderDetails/',orderDetailOption);
+        const newOrderDetail = await orderDetailResponse.json()
+    })
+    console.log('Order Successful');
+          
+    
+
+  
+
+    
+
 }
