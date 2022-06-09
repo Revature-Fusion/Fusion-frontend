@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Registration Page</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <br>
+<div class="wrapper">
+    <br>
+    <div id="inner1">
+        <h1>Register Today!</h1>
+        <table class="table table-striped table-bordered">
+
+             <!-- MEMBER/ADMIN Registration -->
+             <select id="roleList" onchange = "chosenRole()">
+                <option>---Choose Role---</option>
+                <option>MEMBER</option>
+                <option>ADMIN</option>
+             </select>
+            <tr>
+                <td>Email</td>
+                <td><input id="email" type="email" placeholder="email@address.com"></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input id="firstName" type="text" placeholder="first"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input id="lastName" type="text" placeholder="last"></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input id="username" type="text" placeholder="username"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input id="password" type="password" placeholder="Create Password"></td>
+            </tr>
+            <tr>
+                <td>Role</td>
+                <td><input id="role" type="text">
+            </tr>
+            <td><input type="checkbox" onclick="togglePassword()">Show Password</td>
+            <tr>
+        </table>
+        <div>
+            <button id= "register_btn" class="btn" onclick="submitForm()">Register</button>
+            <button onclick=window.location.href='login.html'; id="login">Login</button>
+        </div>
+    </div>
+
+    <br>
+              <!-- Guest info -->
+    <div id="inner2">
+            <h1>I'm a Guest Save My Info!</h1>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <td>Email</td>
+                    <td><input id="guestemail" type="email" placeholder="email@address.com"></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input id="guestfirstName" type="text" placeholder="first"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input id="guestlastName" type="text" placeholder="last"></td>
+                </tr>
+            </table>
+            <div>
+                <button id="guest_btn" class="btn" onclick="submitGuest()">Submit</button>
+            </div>
+            <br>
+            <br>
+    </div>
+</div>      
+</body>
+    <!-- This Is the function that will input the role choice-->
+<script>
+    function chosenRole() {
+    var rolelist = document.getElementById("roleList");
+    document.getElementById("role").value = rolelist.options[rolelist.selectedIndex].text;
+    }
+
+    //-- This function toggles password visibility --//
+    function togglePassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+        x.type = "text";
+        } else {
+        x.type = "password";
+        }
+    }
+    //-- This Is the function that will submit the member/admin info to the Database--
+    async function submitForm() {
+
+        console.log("Submitting.........")
+
+        
+        const emailVal = document.getElementById("email").value
+        const firstnameVal = document.getElementById("firstName").value
+        const lastnameVal = document.getElementById("lastName").value
+        const nameVal = document.getElementById("username").value
+        const passwordVal = document.getElementById("password").value
+        const roleVal = document.getElementById("role").value
+
+        
+        console.log(emailVal)
+        console.log(firstnameVal)
+        console.log(lastnameVal)
+        console.log(nameVal)
+        console.log(passwordVal)
+        console.log(roleVal)
+
+        const data = {
+            email: emailVal,
+            firstName: firstnameVal,
+            lastName: lastnameVal,
+            username: nameVal,
+            password: passwordVal,
+            role: roleVal
+        }
+
+        const url = "http://localhost:5000/users"
+
+        const httpResponse = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        });
+
+
+        const body = await httpResponse.json();
+
+
+        console.log(body);
+        if(body) {
+            alert("Successfully Registered!")
+        } else {
+            alert("Registration unsuccessful.")
+        }
+
+        window.location.reload();
+        document.location.href = "";
+    }
+    //-- This Is the function that will submit the guest info to the Database--
+
+    async function submitGuest() {
+
+        console.log("Submitting.........")
+
+        const emailVal = document.getElementById("guestemail").value
+        const firstNameVal = document.getElementById("guestfirstName").value
+        const lastNameVal = document.getElementById("guestlastName").value
+
+        console.log(emailVal)
+        console.log(firstNameVal)
+        console.log(lastNameVal)
+
+        const data = {
+            email: emailVal,
+            firstName: firstNameVal,
+            lastName: lastNameVal
+        }
+
+        const url = "http://localhost:5000/users/guest"
+
+        const httpResponse = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+
+        });
+
+
+        const body = await httpResponse.json();
+
+
+        console.log(body);
+        if(body) {
+            alert("Successfully Submitted!")
+        } else {
+            alert("Save unsuccessful.")
+        }
+
+        window.location.reload();
+        document.location.href = "login.html";
+    }
+
+
+</script>
+
+</html>
