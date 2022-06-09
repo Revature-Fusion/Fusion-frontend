@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- Library of icons that can be inserted with text -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <!--Internal CSS-->
+    <style>
+        .card {
+            max-width: 350px;
+            border:1px;
+            padding:0.5rem;
+        }
+        .card img {
+            max-width:100%;
+        }
+    </style>
 </head>
 <body>
     <!--Main Navigation Bar (should be at the top of every page within the site) Please use the Relative Path for pages-->
@@ -18,133 +29,30 @@
     
     <h1 style="text-align:center;padding-top:2%;">Available Products</h1>
 
-    <table id="all-products">
-        <tr id="row1">
-            <th>
-                <table id="product1">
-                    <tr>
-                        <th id="product1name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product1pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product1cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product2">
-                    <tr>
-                        <th id="product2name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product2pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product2cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product3">
-                    <tr>
-                        <th id="product3name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product3pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product3cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-        </tr>
-        <tr id="row2">
-            <th>
-                <table id="product4">
-                    <tr>
-                        <th id="product4name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product4pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product4cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product5">
-                    <tr>
-                        <th id="product5name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product5pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product5cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product6">
-                    <tr>
-                        <th id="product6name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product6pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product6cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-        </tr>
-        <tr id="row3">
-            <th>
-                <table id="product7">
-                    <tr>
-                        <th id="product7name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product7pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product7cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product8">
-                    <tr>
-                        <th id="product8name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product8pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product8cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-            <th>
-                <table id="product9">
-                    <tr>
-                        <th id="product9name">Name</th>
-                    </tr>
-                    <tr>
-                        <th id="product9pic">Picture</th>
-                    </tr>
-                    <tr>
-                        <th id="product9cost">Cost</th>
-                    </tr>
-                </table>
-            </th>
-        </tr>
-    </table>
+    <div class="flex flex-just-c flex-wrap" style="border: 1px solid white; padding:0.5rem;">
+        <!--Card One Start-->
+        <div class="flex flex-col card">
+            <div><img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"></div>
+            <div class="flex flex-col">
+                <div class="text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="text-center">
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                    qui officia deserunt mollit anim id est laborum.
+                </div>
+            </div>
+        </div>
+        <!--Card One End-->
+
 
 
 </body>
 <script src="js\nav.js"></script>
+<script>
+    
+</script>
 </html>

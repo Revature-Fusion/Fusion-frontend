@@ -109,6 +109,10 @@ a:active {
     display: flex !important;
 }
 
+.flex-wrap {
+    flex-wrap:wrap !important;
+} 
+
 .flex-no-wrap {
     flex-wrap: nowrap !important;
 }
