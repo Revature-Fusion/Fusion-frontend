@@ -38,7 +38,7 @@ async function populateTables(){
 
     document.getElementById("ToFill").innerHTML = ""; // Reset the table container!
     let userID = 2 // Will be changed to sessionStorage.getItem("userID");
-    
+    console.log(userID);
     console.log("Fetching orders data...");
     const urlForOrders = baseURL + '/ordersByUID/' + userID;
     const httpresponse = await fetch(urlForOrders, {
@@ -49,7 +49,7 @@ async function populateTables(){
       }
 	  });    
     const body = await httpresponse.json()
-    console.log(body); // Should display all the orders of the users as a list.
+    console.log('body is ' + body); // Should display all the orders of the users as a list.
 
     // Create table here
     let tableToCreate = document.createElement("table");
@@ -104,7 +104,6 @@ async function populateTables(){
     for (let i = 0; i < body.length; i++){
         
         var oID = body[i].oID;
-
         console.log("Fetching order details data...");
         const urlForOrderDetails = baseURL + '/orderDetailsByOID/' + oID;
         const httpresponse2 = await fetch(urlForOrderDetails, {
@@ -119,8 +118,55 @@ async function populateTables(){
         console.log(bodyForOrderDetails);
 
         var totalCost = 0;
+   
 
         for (let j = 0; j < bodyForOrderDetails.length; j++){
+          const httpresponse2 = await fetch(urlForOrderDetails, {
+          method: 'GET',
+          body: null,
+          headers: {
+            "Content-type": "application/json;"
+          }
+	      });    
+        const bodyForOrderDetails = await httpresponse2.json()
+        
+        console.log(bodyForOrderDetails);
+        console.log("grabbing adress")
+        // grabbing address
+        var u_ID = body[j].uID
+        console.log(u_ID)
+        const urlForAdress = baseURL + '/address/user/'+ u_ID
+        const httpresponse3 = await fetch(urlForAdress, {
+          method: 'GET',
+          body: null,
+          headers: {
+            "Content-type": "application/json;"
+          }
+	      });    
+        const bodyForAdress = await httpresponse3.json()
+        
+        console.log(bodyForAdress);
+        address = bodyForAdress[0].address
+        console.log(address)
+        // grabbing products
+        console.log("grabbing products")
+        var pID = bodyForOrderDetails[j].pID
+        const urlForProducts = baseURL + '/products/'+ pID
+        const httpresponse4 = await fetch(urlForProducts, {
+          method: 'GET',
+          body: null,
+          headers: {
+            "Content-type": "application/json;"
+          }
+	      });    
+        const bodyForProducts = await httpresponse4.json()
+        
+        console.log(bodyForProducts);
+        var productName = bodyForProducts.name
+        var productImage = bodyForProducts.productImage
+        var productPrice = bodyForProducts.price
+        var productQuantity = bodyForOrderDetails[j].quantity
+      
           //Insert each order details and product info here
           let tRowForDataToCreate = document.createElement("tr");
 
@@ -134,33 +180,31 @@ async function populateTables(){
           thOrderDateData.classList.add("text-center");          
           thOrderDateData.innerHTML = new Date(body[i].dateOfPurchasing);
 
-          // Insert Address Info
-          // Requires additonal fetch to address table api.
 
           // NEED TO DO ADDRESS
           let thOrderAddressData = document.createElement("th");
           thOrderAddressData.classList.add("text-center");          
-          thOrderAddressData.innerHTML = "PlaceHolder For Address";
+          thOrderAddressData.innerHTML = address;
 
           // Insert Product Info
           // Requires additonal fetch to products table api.
           let thProductData = document.createElement("th");
           thProductData.classList.add("text-center");          
-          thProductData.innerHTML = "PlaceHolder For Product Name";
+          thProductData.innerHTML = productName;
 
           let thProductImageData = document.createElement("th");
           thProductImageData.classList.add("text-center");          
-          thProductImageData.innerHTML = "PlaceHolder For Product Image";
+          thProductImageData.innerHTML = productImage;
 
           let thProductCostData = document.createElement("th");
           thProductCostData.classList.add("text-center");          
-          thProductCostData.innerHTML = "PlaceHolder For Product Cost";
+          thProductCostData.innerHTML = productPrice;
 
           var price = 0;
 
           let thProductQuantityData = document.createElement("th");
           thProductQuantityData.classList.add("text-center");          
-          thProductQuantityData.innerHTML = "PlaceHolder For Product Quantity";
+          thProductQuantityData.innerHTML = productQuantity;
           
           var quantity = 0;
           
