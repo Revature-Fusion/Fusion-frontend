@@ -284,7 +284,8 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
 .cart-table {
     padding: .2rem .5rem;
     text-align: justify;
-    font-size: 2rem;
+    font-size: 1.75rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .cart-button {
