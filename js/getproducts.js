@@ -21,19 +21,22 @@ async function displayProducts() {
         if (product.picture) {
             // Creates the picture section of the card
             let imgDiv = document.createElement('div');
-            let img = document.createElement('img');
+            let img = new Image();
 
-            const blob = new Blob([product.picture.join('')], {type: "image/png"});
-            const imageUrl = URL.createObjectURL(blob);
+            console.log(product.picture);
 
-            img.src = imageUrl.toString();
+            var arrayBufferView = new Uint8Array(product.picture)
+
+            var blob = new Blob([arrayBufferView], {type: "image/png"});
+            var imageUrl = URL.createObjectURL(blob);
+            img.src = imageUrl;
             imgDiv.appendChild(img);
             card.appendChild(imgDiv);
         }
 
         // Wrapper for product's information
         let productInfo = document.createElement('div');
-        productInfo.classList.add('flex', 'flex-col');
+        productInfo.classList.add('flex', 'flex-col', 'flex-align-c');
 
         // Product's  name
         let productName = document.createElement('div');
@@ -54,6 +57,13 @@ async function displayProducts() {
         productPrice.classList.add('text-center');
         productPrice.innerHTML = formatter.format(product.price);
         productInfo.appendChild(productPrice);
+
+        // Link to view product's details
+        let productLink = document.createElement('a');
+        productLink.classList.add('button', 'button-primary');
+        productLink.href = `displayproduct.html?pID=${product.p_id}`
+        productLink.innerHTML = 'View'
+        productInfo.appendChild(productLink);
 
         // Adds product info to card
         card.appendChild(productInfo);
