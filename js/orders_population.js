@@ -4,8 +4,15 @@ var baseURL = 'http://localhost:7000' // Used for all the fetches will be change
 // Populate tables using data from fetch
 async function populateTables(){
 
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  console.log(user);
+
+  user.role = "MEMBER"; // Delete this when login is working.
+
+  if (user.role = "MEMBER"){
+
    document.getElementById("ToFill").innerHTML = ""; // Reset the table container!
-   let userID = 2 // Will be changed to sessionStorage.getItem("userID");
+   let userID = user.uID // Will be changed to user.uID
    console.log(userID);
    console.log("Fetching orders data...");
    const urlForOrders = baseURL + '/ordersByUID/' + userID;
@@ -217,6 +224,13 @@ async function populateTables(){
          tableToCreate.appendChild(tFooter);
        }
    }
+
+  }
+  else if (user.role=="ADMIN"){
+    alert("You are an admin not a member!");
+  } else if (user.role=="GUEST"){
+    alert("You are a guest not a member!");
+  }
 
    document.getElementById("ToFill").appendChild(tableToCreate);
 
