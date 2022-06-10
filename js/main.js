@@ -18,10 +18,10 @@ async function checkoutCart() {
     ]
 
     const user = {
-        uId: 2,
-        email: "JaneSmith@aol.com",
-        firstName: "Jane",
-        lastName: "Smith"
+        uId: 10,
+        email: "test9@email.com",
+        firstName: "test9fname",
+        lastName: "test9lname"
     }
 
     sessionStorage.setItem('cart', JSON.stringify(cart))
@@ -73,28 +73,35 @@ async function checkoutParse() {
         const userId = user.uId;
         const httpurl = `http://localhost:7000/address/user/${userId}`;
         const httpResponse = await fetch(httpurl);
-        const address = (await httpResponse.json())[0];
-        sessionStorage.setItem('userAddress', JSON.stringify(address))
-        if (address) {
+        const addressList = (await httpResponse.json());
+        if (addressList && addressList.length > 0) {
+            const address = addressList[0];
+            sessionStorage.setItem('userAddress', JSON.stringify(address))
             document.getElementById('adr').value = address.address;
             document.getElementById('city').value = address.city;
             document.getElementById('pCode').value = address.postal_code;
             document.getElementById('ctr').value = address.country;
-        }          
+            document.getElementById('adr').disabled = true;
+            document.getElementById('city').disabled = true;
+            document.getElementById('pCode').disabled = true;
+            document.getElementById('ctr').disabled = true;
+        } else {
+            sessionStorage.setItem('userAddress', null);
+        }
     }
 }
 
 async function checkout() {
-    const address = JSON.parse(sessionStorage.getItem('userAddress'));
+    let address = JSON.parse(sessionStorage.getItem('userAddress'));
     const user = JSON.parse(sessionStorage.getItem('user'));
     const orderList = JSON.parse(sessionStorage.getItem('cart'))
     if (!address) {
         const userAddressData = {
-            u_id: user.userId,
-            address: document.getElementById('adr').innerHTML,
-            city: document.getElementById('city').innerHTML,
-            postal_code: document.getElementById('pCode').innerHTML,
-            country: document.getElementById('ctr').innerHTML
+            u_id: user.uId,
+            address: document.getElementById('adr').value,
+            city: document.getElementById('city').value,
+            postal_code: document.getElementById('pCode').value,
+            country: document.getElementById('ctr').value
         };
         
         const userAddressOption = {
@@ -103,8 +110,8 @@ async function checkout() {
             body: JSON.stringify(userAddressData)
         };
         const userAddressResponse = await fetch("http://localhost:7000/address/",userAddressOption);
-        const newAddress = await userAddressResponse.json();
-        sessionStorage.setItem('userAddress', newAddress);
+        address = await userAddressResponse.json();
+        sessionStorage.setItem('userAddress', JSON.stringify(address));
     };
 
     const orderData = {
@@ -133,8 +140,16 @@ async function checkout() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(orderDetailData)
         };
-        const orderDetailResponse = await fetch('http://localhost:7000/orderDetails/',orderDetailOption);
+        const orderDetailResponse = await fetch('http://localhost:7000/orderDetails/', orderDetailOption);
         const newOrderDetail = await orderDetailResponse.json()
+
+        const productOption = {
+            method: "PATCH",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({stock: 1})
+        }
+
+        const productResponse = await fetch(`http://localhost:7000/products/${element.p_id}`, productOption)
     }
     console.log('Order Successful');
           
