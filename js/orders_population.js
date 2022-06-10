@@ -213,7 +213,7 @@ async function populateTables(){
          let thTotalCostHeader = document.createElement("th");
          thTotalCostHeader.innerHTML = "Total Cost: "
          let thActualTotalCost = document.createElement("th");
-         thActualTotalCost.innerHTML = "Cost Placeholder! Currently: " + totalCost;
+         thActualTotalCost.innerHTML = "" + totalCost;
          let fill1 = document.createElement("th");
          let fill2 = document.createElement("th");
          let fill3 = document.createElement("th");
