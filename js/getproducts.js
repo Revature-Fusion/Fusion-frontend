@@ -15,28 +15,22 @@ async function displayProducts() {
     body.forEach(product => {
         // Creates a product card
         let card = document.createElement('div');
-        card.classList.add('flex', 'flex-col', 'card');
+        card.classList.add('flex', 'flex-col', 'flex-just-start', 'm', 'card');
 
         // TODO: fix images not being properly diplayed
         if (product.picture) {
             // Creates the picture section of the card
-            let imgDiv = document.createElement('div');
             let img = new Image();
-
-            console.log(product.picture);
-
-            var arrayBufferView = new Uint8Array(product.picture)
-
-            var blob = new Blob([arrayBufferView], {type: "image/png"});
-            var imageUrl = URL.createObjectURL(blob);
-            img.src = imageUrl;
-            imgDiv.appendChild(img);
-            card.appendChild(imgDiv);
+            img.classList.add('product-image')
+            img.src = `images/${product.picture}`;
+            card.appendChild(img);
+        } else {
+            card.classList.add('card-no-image');
         }
 
         // Wrapper for product's information
         let productInfo = document.createElement('div');
-        productInfo.classList.add('flex', 'flex-col', 'flex-align-c');
+        productInfo.classList.add('flex', 'flex-col', 'flex-align-c', 'product-info');
 
         // Product's  name
         let productName = document.createElement('div');

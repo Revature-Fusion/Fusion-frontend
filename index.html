@@ -11,12 +11,28 @@
     <!--Internal CSS-->
     <style>
         .card {
-            max-width: 350px;
-            border:1px;
-            padding:0.5rem;
+            max-width: 200px;
+            /* border-width: 2px;
+            border-style: solid; */
+            border-radius: 5%;
+            border-top: 0;
+            /* padding:0.5rem; */
+        }
+        .card-no-image {
+            border: 2px solid !important;
+            border-radius: 1rem;
+            padding: 0.5rem;
+        }
+        .card-no-image .product-info {
+            border: 0;
         }
         .card img {
             max-width:100%;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .product-info {
+            border: 2px solid;
+            border-radius: 0 0 1rem 1rem;
         }
     </style>
 </head>
@@ -29,7 +45,7 @@
     
     <h1 style="text-align:center;padding-top:2%;">Available Products</h1>
 
-    <div id="products" class="flex flex-just-c flex-wrap" style="border: 1px solid white; padding:0.5rem;">
+    <div id="products" class="flex flex-align-s flex-just-c flex-wrap" style="border: 1px solid white; padding:0.5rem;">
     <div class="flex flex-just-c flex-wrap">
         <!--Card One Start-->
         <!-- <div class="flex flex-col card">
