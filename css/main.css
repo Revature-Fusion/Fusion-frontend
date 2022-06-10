@@ -285,6 +285,6 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
     border: 2px solid var(--text_color);
     border-top: 0;
 }
-.table > tfoot > tr:nth-child(odd) {
+.table > tfoot {
     background-color: var(--nav-background);
 }
