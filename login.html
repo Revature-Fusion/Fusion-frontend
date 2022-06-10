@@ -57,8 +57,10 @@
         };
 
         xttp.setRequestHeader('Content-Type', 'application/json')
-
         xttp.send(JSON.stringify(body));
+
+        window.sessionStorage
+        sessionStorage.setItem('userdata', JSON.stringify(body))
     }
 
 </script>
