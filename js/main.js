@@ -19,14 +19,14 @@ async function checkoutCart() {
         }
     ]
 
-    const user = null;
+    //const user = null;
 
-    // const user = {
-    //     uId: 10,
-    //     email: "test9@email.com",
-    //     firstName: "test9fname",
-    //     lastName: "test9lname"
-    // }
+    const user = {
+        uId: 10,
+        email: "test9@email.com",
+        firstName: "test9fname",
+        lastName: "test9lname"
+    }
 
     sessionStorage.setItem('cart', JSON.stringify(cart))
     sessionStorage.setItem('user', JSON.stringify(user))
