@@ -147,7 +147,7 @@ async function populateTables(){
          //Insert Order Date
          let thOrderDateData = document.createElement("th");
          thOrderDateData.classList.add("text-center");          
-         thOrderDateData.innerHTML = new Date(body[i].dateOfPurchasing);
+         thOrderDateData.innerHTML = new Date(body[i].dateOfPurchase);
 
 
          // NEED TO DO ADDRESS
