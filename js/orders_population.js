@@ -182,13 +182,13 @@ async function populateTables(){
          thProductCostData.classList.add("text-center");          
          thProductCostData.innerHTML = productPrice;
 
-         var price = 0;
+         var price = parseFloat(productPrice);
 
          let thProductQuantityData = document.createElement("th");
          thProductQuantityData.classList.add("text-center");          
          thProductQuantityData.innerHTML = productQuantity;
          
-         var quantity = 0;
+         var quantity = parseInt(productQuantity);
          
          totalCost += (price * quantity);
          
