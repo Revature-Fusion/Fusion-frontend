@@ -277,7 +277,7 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
     background-color: var(--nav-background);
 }
 
-.table th, table td {
+.table th, .table td {
     padding: 0.2rem 1rem;
 }
 
