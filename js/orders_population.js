@@ -7,12 +7,18 @@ async function populateTables(){
   const user = JSON.parse(sessionStorage.getItem('user'));
   console.log(user);
 
-  user.role = "MEMBER"; // Delete this when login is working.
+  if(user.role == null)
+    user.role = "GUEST";
 
-  if (user.role = "MEMBER"){
+  if (user.role == "MEMBER"){
 
    document.getElementById("ToFill").innerHTML = ""; // Reset the table container!
+   
    let userID = user.uID // Will be changed to user.uID
+
+   if(userID == null)
+      userID = 0;
+   
    console.log(userID);
    console.log("Fetching orders data...");
    const urlForOrders = baseURL + '/ordersByUID/' + userID;
