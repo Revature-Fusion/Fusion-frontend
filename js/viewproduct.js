@@ -26,10 +26,13 @@ async function loadProduct(pID) {
         imgDiv.appendChild(img);
         productDisplay.appendChild(imgDiv);
 
+        // Wrapper div for product information
         let productInfo = document.createElement('div');
         productInfo.classList.add('flex', 'flex-col', 'p-x');
+        productInfo.id = 'product-info'
         productDisplay.appendChild(productInfo);
 
+        // Display Product Description
         let description = document.createElement('p');
         description.innerHTML = body.desc;
         productInfo.appendChild(description);
@@ -42,15 +45,15 @@ async function loadProduct(pID) {
             maximumFractionDigits: 2
         });
 
-        let priceDiv = document.createElement('div');
-        priceDiv.classList.add('text-right');
-        let price = document.createElement('strong');
+        // Display Price
+        let price = document.createElement('h3')
+        price.classList.add('text-right');
         price.innerHTML = formatter.format(body.price);
-        priceDiv.appendChild(price);
-        productInfo.appendChild(priceDiv);
+        productInfo.appendChild(price);
 
+        // Displays the options users have to interact with the product
         let optionsDiv = document.createElement('div');
-        optionsDiv.classList.add('flex', 'flex-justify-e', 'flex-align-c');
+        optionsDiv.classList.add('flex', 'flex-just-e', 'flex-align-c');
         productInfo.appendChild(optionsDiv);
         
         let addCartButton = document.createElement('button');
