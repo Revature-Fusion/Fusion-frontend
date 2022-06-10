@@ -1,5 +1,5 @@
 async function checkoutCart() {
-    const cart = 
+    const cart =
     [
         {
             p_id: 44,
@@ -17,12 +17,14 @@ async function checkoutCart() {
         }
     ]
 
-    const user = {
-        uId: 10,
-        email: "test9@email.com",
-        firstName: "test9fname",
-        lastName: "test9lname"
-    }
+    const user = null;
+
+    // const user = {
+    //     uId: 10,
+    //     email: "test9@email.com",
+    //     firstName: "test9fname",
+    //     lastName: "test9lname"
+    // }
 
     sessionStorage.setItem('cart', JSON.stringify(cart))
     sessionStorage.setItem('user', JSON.stringify(user))
@@ -34,7 +36,7 @@ async function parseOrder() {
 
     document.getElementById("cartNum").innerHTML = orderList.length
     let total = 0;
-    
+
     orderList.forEach(element => {
         const outerElement = document.createElement('tr');
         const innerElement = document.createElement('td');
@@ -56,7 +58,7 @@ async function parseOrder() {
         innerElement.appendChild(price);
         //elmnt.appendChild(quant);
     });
-    
+
     document.getElementById("totalPrice").innerHTML = `$${total}`
 }
 
@@ -69,11 +71,11 @@ async function checkoutParse() {
         document.getElementById('fName').disabled = true;
         document.getElementById('lName').disabled = true;
         document.getElementById('email').disabled = true;
-        
+
         const userId = user.uId;
         const httpurl = `http://localhost:7000/address/user/${userId}`;
         const httpResponse = await fetch(httpurl);
-        const addressList = (await httpResponse.json());
+        const addressList = await httpResponse.json();
         if (addressList && addressList.length > 0) {
             const address = addressList[0];
             sessionStorage.setItem('userAddress', JSON.stringify(address))
@@ -91,6 +93,18 @@ async function checkoutParse() {
     }
 }
 
+async function getGuestInfo() {
+  const guestUrl = 'http://localhost:5000/users';
+  const res = await fetch(guestUrl);
+  const guestBody = await res.json();
+
+  const email = document.getElementById('email').value;
+  let currentGuest = guestBody.find(user => user.email === email);
+  console.log(currentGuest);
+  sessionStorage.setItem('user', JSON.stringify(currentGuest));
+  checkoutParse();
+}
+
 async function checkout() {
     let address = JSON.parse(sessionStorage.getItem('userAddress'));
     const user = JSON.parse(sessionStorage.getItem('user'));
@@ -103,7 +117,7 @@ async function checkout() {
             postal_code: document.getElementById('pCode').value,
             country: document.getElementById('ctr').value
         };
-        
+
         const userAddressOption = {
             method: "POST",
             headers: { 'Content-Type': 'application/json'},
@@ -152,6 +166,6 @@ async function checkout() {
         const productResponse = await fetch(`http://localhost:7000/products/${element.p_id}`, productOption)
     }
     console.log('Order Successful');
-          
-    
+
+
 }
