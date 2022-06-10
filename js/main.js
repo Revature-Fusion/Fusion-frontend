@@ -6,14 +6,16 @@ async function checkoutCart() {
             name: "HDMI Cable Dual Package",
             desc: "A package of two HDMI cables",
             price: 12.0,
-            stock: 100
+            stock: 100,
+            quantity: 2
         },
         {
             p_id: 45,
             name: "Cat Ear Headphones",
             desc: "Headphones with cat ears",
             price: 60.0,
-            stock: 100
+            stock: 100,
+            quantity: 3
         }
     ]
 
@@ -44,12 +46,12 @@ async function parseOrder() {
 
         elmnt.setAttribute('id', 'cartItems');
         elmnt.setAttribute('href', '');
-        elmnt.innerHTML = element.name
+        elmnt.innerHTML = `${element.name} x${element.quantity}`
 
         const price = document.createElement('span')
-        price.innerHTML = `$${element.price}`
+        price.innerHTML = `$${element.price * element.quantity} `
 
-        total += element.price
+        total += element.price * element.quantity
 
         const cart = document.getElementById('userCart');
         cart.appendChild(outerElement);
@@ -146,7 +148,7 @@ async function checkout() {
         const orderDetailData =  {
             oID: newOrder.oID,
             pID: element.p_id,
-            quantity: 1
+            quantity: element.quantity
         };
 
         const orderDetailOption = {
@@ -160,7 +162,7 @@ async function checkout() {
         const productOption = {
             method: "PATCH",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({stock: 1})
+            body: JSON.stringify({stock: element.quantity})
         }
 
         const productResponse = await fetch(`http://localhost:7000/products/${element.p_id}`, productOption)
