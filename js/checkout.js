@@ -1,35 +1,33 @@
 async function checkoutCart() {
-    const cart =
-    [
-        {
-            p_id: 44,
-            name: "HDMI Cable Dual Package",
-            desc: "A package of two HDMI cables",
-            price: 12.0,
-            stock: 100,
-            quantity: 2
-        },
-        {
-            p_id: 45,
-            name: "Cat Ear Headphones",
-            desc: "Headphones with cat ears",
-            price: 60.0,
-            stock: 100,
-            quantity: 3
-        }
-    ]
+    // const cart =
+    // [
+    //     {
+    //         productId: 44,
+    //         name: "HDMI Cable Dual Package",
+    //         desc: "A package of two HDMI cables",
+    //         price: 12.0,
+    //         stock: 100,
+    //         quantity: 2
+    //     },
+    //     {
+    //         productId: 45,
+    //         name: "Cat Ear Headphones",
+    //         desc: "Headphones with cat ears",
+    //         price: 60.0,
+    //         stock: 100,
+    //         quantity: 3
+    //     }
+    // ]
 
-    //const user = null;
+    // const user = {
+    //     uId: 33,
+    //     email: "test32@email.com",
+    //     firstName: "testfname",
+    //     lastName: "teslname"
+    // }
+    // sessionStorage.setItem('cart', JSON.stringify(cart))
+    // sessionStorage.setItem('user', JSON.stringify(user))
 
-    const user = {
-        uId: 10,
-        email: "test9@email.com",
-        firstName: "test9fname",
-        lastName: "test9lname"
-    }
-
-    sessionStorage.setItem('cart', JSON.stringify(cart))
-    sessionStorage.setItem('user', JSON.stringify(user))
     parseOrder()
     checkoutParse()
 }
@@ -45,11 +43,11 @@ async function parseOrder() {
         const elmnt = document.createElement('a');
 
         elmnt.setAttribute('id', 'cartItems');
-        elmnt.setAttribute('href', '');
+        elmnt.setAttribute('href', `displayproduct.html?pID=${element.productId}`);
         elmnt.innerHTML = `${element.name} x${element.quantity}`
 
         const price = document.createElement('span')
-        price.innerHTML = `$${element.price * element.quantity} `
+        price.innerHTML = `$${element.price * element.quantity}`
 
         total += element.price * element.quantity
 
@@ -108,6 +106,18 @@ async function getGuestInfo() {
 }
 
 async function checkout() {
+    if (document.getElementById('fName').value == "" ||
+        document.getElementById('lName').value == "" ||
+        document.getElementById('email').value == "" ||
+        document.getElementById('adr').value == "" ||
+        document.getElementById('city').value == "" ||
+        document.getElementById('pCode').value == "" ||
+        document.getElementById('ctr').value == "")
+        {
+            alert("Check out failed!");
+            return
+    }
+
     let address = JSON.parse(sessionStorage.getItem('userAddress'));
     const user = JSON.parse(sessionStorage.getItem('user'));
     const orderList = JSON.parse(sessionStorage.getItem('cart'))
