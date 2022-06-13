@@ -31,37 +31,40 @@
 
 <script>
 
-    function login(){
-        console.log("login");
+    async function login() {
 
-        let xttp = new XMLHttpRequest();
-        
-        xttp.onreadystatechange = function(){
-            console.log(this.readyState);
+        console.log("Submitting.........")
 
-            if (this.readyState === 4 && this.status === 200){
-                console.log(this.responseText);
+        const usernameVal = document.getElementById("username").value
+        const passwordVal = document.getElementById("password").value
 
-                let user = JSON.parse(this.responseText);
-                document.location.href = "home.html";
-            }
+        console.log(usernameVal)
+        console.log(passwordVal)
+
+        const data = {
+            username: usernameVal,
+            password: passwordVal
         }
 
-        url = "http://localhost:5000/login";
+        const url = "http://localhost:5000/login"
 
-        xttp.open("POST", url, true);
+        const httpResponse = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
 
-        let body = {
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-        };
+        });
 
-        xttp.setRequestHeader('Content-Type', 'application/json')
-        xttp.send(JSON.stringify(body));
 
-        window.sessionStorage
+        const body = await httpResponse.json();
+
+        window.location.reload();
+        document.location.href = "index.html";
         sessionStorage.setItem('userdata', JSON.stringify(body))
     }
+
 
 </script>
 </html>
