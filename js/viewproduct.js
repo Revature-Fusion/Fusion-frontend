@@ -18,14 +18,15 @@ async function loadProduct(pID) {
         console.log(body);
         productName.innerHTML = body.name;
 
-        let imgDiv = document.createElement('div');
-        imgDiv.id = 'img';
-        img = document.createElement('img');
-        // TODO: set img src to the products actual image
-        img.setAttribute('src', 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png');
-        imgDiv.appendChild(img);
-        productDisplay.appendChild(imgDiv);
-
+        if (body.picture) {
+            let imgDiv = document.createElement('div');
+            imgDiv.id = 'img';
+            img = document.createElement('img');
+            img.setAttribute('src', `images/${body.picture}`);
+            imgDiv.appendChild(img);
+            productDisplay.appendChild(imgDiv);
+        }
+        
         // Wrapper div for product information
         let productInfo = document.createElement('div');
         productInfo.classList.add('flex', 'flex-col', 'p-x');
