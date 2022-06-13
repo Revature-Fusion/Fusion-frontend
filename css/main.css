@@ -109,6 +109,10 @@ a:active {
     display: flex !important;
 }
 
+.flex-wrap {
+    flex-wrap:wrap !important;
+} 
+
 .flex-no-wrap {
     flex-wrap: nowrap !important;
 }
@@ -211,6 +215,11 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
     cursor: pointer;
     border-radius: 8px;
     line-height: 1rem;
+}
+
+.button:disabled, .button:disabled:hover, .button:disabled:active {
+    background-color: slategray;
+    border-color: slategray;
 }
 
 /* a.button:visited, a.button:hover, a.button:active {
