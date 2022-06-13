@@ -36,6 +36,7 @@ async function populateTables(){
    let tableToCreate = document.createElement("table");
    tableToCreate.classList.add("table");
    tableToCreate.classList.add("m-y");
+   tableToCreate.id.add("orderTable");
 
    // Create table header elements here
    let theadToCreate = document.createElement("thead");
