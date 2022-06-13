@@ -1,6 +1,12 @@
-// TODO: get whether user is logged in
+var user = JSON.parse(sessionStorage.getItem('userdata'));
+console.log(user);
 
-let isLoggedin = true;
+let isLoggedin = false;
+
+if (user) {
+    isLoggedin = true;
+}
+
 
 nav = document.getElementById('nav');
 nav.innerHTML = '';
@@ -17,9 +23,9 @@ if (isLoggedin) {
     let ordersLI = document.createElement('li');
     let ordersAnchor = document.createElement('a');
     ordersAnchor.setAttribute('href', 'myorders.html');
-    ordersAnchor.innerHTML = 'My Orders'
+    ordersAnchor.innerHTML = 'My Orders';
     ordersLI.appendChild(ordersAnchor);
-    nav.appendChild(ordersLI)
+    nav.appendChild(ordersLI);
 }
 
 // TODO: check if user is an admin, if they are, generate links for various admin options
@@ -44,12 +50,9 @@ whiteSpace2.classList.add('whitespace');
 nav.appendChild(whiteSpace2);
 
 if (isLoggedin) {
-    let userLI = document.createElement('li')
-    // TODO get name info from session storage
-    let firstName = 'Jane'
-    let lastName = 'Doe'
-    userLI.innerHTML = `${firstName} ${lastName}`
-    nav.appendChild(userLI)
+    let userLI = document.createElement('li');
+    userLI.innerHTML = `${user.username}`;
+    nav.appendChild(userLI);
 }
 
 let cartLI = document.createElement('li');
@@ -58,8 +61,6 @@ cartAnchor.setAttribute('href', 'cart.html');
 cartAnchor.innerHTML = '<i class="bi bi-cart-fill"></i> Cart';
 cartLI.appendChild(cartAnchor);
 nav.appendChild(cartLI);
-
-// TODO: if user is logged in, override default behavior of this link so the session data is reset before redirecting
 let loginLI = document.createElement('li');
 let loginAnchor = document.createElement('a');
 loginAnchor.setAttribute('href', 'login.html')
@@ -67,11 +68,12 @@ loginAnchor.innerHTML = `<i class="bi bi-person-fill"></i> ${isLoggedin ? "Logou
 if (isLoggedin) {
     // If logged in, the link should erase session info and then redirect
     loginAnchor.addEventListener('click', (event) => {
-        // TODO: delete relevant session info
+        sessionStorage.clear();
+
         let logoutSuccess = true;
 
         if (logoutSuccess) {
-            alert('successfully logged out')
+            // alert('successfully logged out')
             return true;
         } else {
             alert('failed to log out')
