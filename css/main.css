@@ -286,6 +286,21 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
     background-color: var(--nav-background);
 }
 
-.table th, table td {
+.table th, .table td {
     padding: 0.2rem 1rem;
+}
+
+.cart-table {
+    padding: .2rem .5rem;
+    text-align: justify;
+    font-size: 1.75rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cart-button {
+    text-align: center;
+}
+
+.cart-input {
+    font-size: 1.5rem;
 }
