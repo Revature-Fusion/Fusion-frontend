@@ -125,7 +125,7 @@ async function checkout() {
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(userAddressData)
         };
-        const userAddressResponse = await fetch("http://localhost:7000/address/",userAddressOption);
+        const userAddressResponse = await fetch("http://localhost:7000/address",userAddressOption);
         address = await userAddressResponse.json();
         sessionStorage.setItem('userAddress', JSON.stringify(address));
     };
@@ -167,7 +167,8 @@ async function checkout() {
 
         const productResponse = await fetch(`http://localhost:7000/products/${element.p_id}`, productOption)
     }
-    console.log('Order Successful');
-
-
+    
+    alert("Successfully Checked out!");
+    window.location = "index.html";
+    
 }
