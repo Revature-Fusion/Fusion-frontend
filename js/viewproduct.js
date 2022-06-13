@@ -66,7 +66,7 @@ async function loadProduct(pID) {
         } else {
             addCartButton.innerHTML = `<i class="bi bi-cart-plus-fill"></i> Add to Cart`;
             addCartButton.addEventListener('click', () => {
-                addToCart(body.stock);
+                addToCart(body.stock, body);
             });
 
             let quantityInput = document.createElement('input');
@@ -90,12 +90,34 @@ async function loadProduct(pID) {
     }
 }
 
-function addToCart(maxStock) {
-    quantity = document.getElementById('quantity');
+function addToCart(maxStock, product) {
+    quantity = parseInt(document.getElementById('quantity').value);
 
     if (quantity < 1 || quantity > maxStock) {
         alert(`Invalid Quantity, please make sure it is at least 1 and less than ${maxStock}`);
     } else {
-        // TODO add item(s) to cart
+        var cart = sessionStorage.getItem('cart');
+        cart = JSON.parse(cart);
+
+        if (!cart) {
+            cart = [];
+        }
+
+        let notInCart = true;
+        cart.forEach(element => {
+            if (element.productId = productId) {
+                element.quantity += quantity;
+                notInCart = false;
+                
+            }
+        });
+
+        if (notInCart) {
+            cart.push({'productId': productId, 'quantity': quantity, 'name': product.name, 'price': product.price})
+        }
+
+        console.log(cart);
+
+        sessionStorage.setItem('cart', JSON.stringify(cart))
     }
 }
