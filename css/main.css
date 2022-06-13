@@ -289,3 +289,11 @@ ul#nav > li > a:visited, ul#nav > li > a:hover, ul#nav > li > a:active {
 .table th, table td {
     padding: 0.2rem 1rem;
 }
+
+.table > tfoot {
+    border: 2px solid var(--text_color);
+    border-top: 0;
+}
+.table > tfoot {
+    background-color: var(--nav-background);
+}
