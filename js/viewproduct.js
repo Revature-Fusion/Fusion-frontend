@@ -105,7 +105,7 @@ function addToCart(maxStock, product) {
 
         let notInCart = true;
         cart.forEach(element => {
-            if (element.productId = productId) {
+            if (element.productId == productId) {
                 element.quantity += quantity;
                 notInCart = false;
                 
@@ -117,6 +117,8 @@ function addToCart(maxStock, product) {
         }
 
         console.log(cart);
+
+        alert(`Added ${quantity} ${product.name} to cart`);
 
         sessionStorage.setItem('cart', JSON.stringify(cart))
     }
