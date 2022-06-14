@@ -4,7 +4,7 @@ var baseURL = 'http://localhost:7000' // Used for all the fetches will be change
 // Populate tables using data from fetch
 async function populateTables(){
 
-  const user = JSON.parse(sessionStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('userdata'));
   console.log(user);
 
   if(user.role == null)
@@ -33,10 +33,10 @@ async function populateTables(){
    console.log('body is ' + body); // Should display all the orders of the users as a list.
 
    // Create table here
-   let tableToCreate = document.createElement("table");
+   var tableToCreate = document.createElement("table");
    tableToCreate.classList.add("table");
    tableToCreate.classList.add("m-y");
-   tableToCreate.id.add("orderTable");
+   tableToCreate.setAttribute("id", "orderTable");
 
    // Create table header elements here
    let theadToCreate = document.createElement("thead");
