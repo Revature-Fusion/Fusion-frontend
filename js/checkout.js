@@ -180,6 +180,9 @@ async function checkout() {
 
         const productResponse = await fetch(`http://localhost:7000/products/${element.productId}`, productOption)
         sessionStorage.removeItem("cart")
+        if (user.role === 'GUEST') {
+            sessionStorage.removeItem('userdata')
+        }
     }
     
     alert("Successfully Checked out!");
