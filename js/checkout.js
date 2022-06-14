@@ -132,7 +132,7 @@ async function checkout() {
 
         const userAddressOption = {
             method: "POST",
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-type': 'application/json'},
             body: JSON.stringify(userAddressData)
         };
         const userAddressResponse = await fetch("http://localhost:7000/address",userAddressOption);
@@ -147,7 +147,7 @@ async function checkout() {
     };
     const orderOption = {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(orderData)
     };
 
@@ -163,7 +163,7 @@ async function checkout() {
 
         const orderDetailOption = {
             method: "POST",
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-type': 'application/json'},
             body: JSON.stringify(orderDetailData)
         };
         const orderDetailResponse = await fetch('http://localhost:7000/orderDetails/', orderDetailOption);
@@ -171,7 +171,7 @@ async function checkout() {
 
         const productOption = {
             method: "PATCH",
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-type': 'application/json'},
             body: JSON.stringify({stock: element.quantity})
         }
 
