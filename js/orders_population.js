@@ -14,7 +14,7 @@ async function populateTables(){
 
    document.getElementById("ToFill").innerHTML = ""; // Reset the table container!
    
-   let userID = user.uID // Will be changed to user.uID
+   let userID = user.uId // Will be changed to user.uID
 
    if(userID == null)
       userID = 0;
@@ -59,9 +59,9 @@ async function populateTables(){
    thProduct.innerHTML = "Product";
    thProduct.classList.add("text-center");
 
-   let thProductImage = document.createElement("th");
-   thProductImage.innerHTML = "Product Image";
-   thProductImage.classList.add("text-center");
+  //  let thProductImage = document.createElement("th");
+  //  thProductImage.innerHTML = "Product Image";
+  //  thProductImage.classList.add("text-center");
 
    let thProductPrice = document.createElement("th");
    thProductPrice.innerHTML = "Product Price";
@@ -76,7 +76,7 @@ async function populateTables(){
    tRowForHeadToCreate.appendChild(thOrderDate);
    tRowForHeadToCreate.appendChild(thAddress);
    tRowForHeadToCreate.appendChild(thProduct);
-   tRowForHeadToCreate.appendChild(thProductImage);
+  //  tRowForHeadToCreate.appendChild(thProductImage);
    tRowForHeadToCreate.appendChild(thProductPrice);
    tRowForHeadToCreate.appendChild(thQuantity);
    theadToCreate.appendChild(tRowForHeadToCreate);
@@ -116,7 +116,7 @@ async function populateTables(){
        console.log(bodyForOrderDetails);
        console.log("grabbing adress")
        // grabbing address
-       var u_ID = body[j].uID
+       var u_ID = userID
        console.log(u_ID)
        const urlForAdress = baseURL + '/address/user/'+ u_ID
        const httpresponse3 = await fetch(urlForAdress, {
@@ -173,11 +173,14 @@ async function populateTables(){
          // Requires additonal fetch to products table api.
          let thProductData = document.createElement("th");
          thProductData.classList.add("text-center");          
-         thProductData.innerHTML = productName;
+         let productlink = document.createElement('a');
+         productlink.setAttribute('href', `displayproduct.html?pID=${pID}`)
+         productlink.innerHTML = productName;
+         thProductData.appendChild(productlink);
 
-         let thProductImageData = document.createElement("th");
-         thProductImageData.classList.add("text-center");          
-         thProductImageData.innerHTML = productImage;
+        //  let thProductImageData = document.createElement("th");
+        //  thProductImageData.classList.add("text-center");          
+        //  thProductImageData.innerHTML = productImage;
 
          let thProductCostData = document.createElement("th");
          thProductCostData.classList.add("text-center");          
@@ -200,7 +203,7 @@ async function populateTables(){
          tRowForDataToCreate.appendChild(thOrderDateData);
          tRowForDataToCreate.appendChild(thOrderAddressData);
          tRowForDataToCreate.appendChild(thProductData);
-         tRowForDataToCreate.appendChild(thProductImageData);
+        //  tRowForDataToCreate.appendChild(thProductImageData);
          tRowForDataToCreate.appendChild(thProductCostData);
          tRowForDataToCreate.appendChild(thProductQuantityData);
          tBody.appendChild(tRowForDataToCreate);
@@ -219,14 +222,14 @@ async function populateTables(){
          let fill2 = document.createElement("th");
          let fill3 = document.createElement("th");
          let fill4 = document.createElement("th");
-         let fill5 = document.createElement("th");
+        //  let fill5 = document.createElement("th");
          tRowForFooter.appendChild(thTotalCostHeader);
          tRowForFooter.appendChild(thActualTotalCost);
          tRowForFooter.appendChild(fill1);
          tRowForFooter.appendChild(fill2);
          tRowForFooter.appendChild(fill3);
          tRowForFooter.appendChild(fill4);
-         tRowForFooter.appendChild(fill5);
+        //  tRowForFooter.appendChild(fill5);
          tFooter.appendChild(tRowForFooter)
          tableToCreate.appendChild(tFooter);
        }
