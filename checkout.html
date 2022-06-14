@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fusion - Checkout - Cart</title>
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <style>
@@ -189,9 +189,9 @@ td {
                     <i class="fa fa-cc-discover" style="color:rgb(243, 190, 92);"></i>
                     </div>
                     <label for="fName"><i class="fa fa-user"></i> First Name</label>
-                    <input type="text" id="fName" name="firstname" placeholder="John M. Doe">
+                    <input type="text" id="fName" name="firstname" placeholder="John ">
                     <label for="lname"><i class="fa fa-user"></i> Last Name</label>
-                    <input type="text" id="lName" name="firstname" placeholder="John M. Doe">
+                    <input type="text" id="lName" name="firstname" placeholder="Doe">
                     <label for="email"><i class="fa fa-envelope"></i> Email</label>
                     <input type="text" id="email" name="email" onfocusout="getGuestInfo()" placeholder="john@example.com">
                     <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
@@ -214,10 +214,10 @@ td {
         </div>
             <div class="col-25">
                 <div class="container1">
-                <h4>Cart <span class="price" style="color: var(--text_color)"><i class="fa fa-shopping-cart"></i> <b id="cartNum">4</b></span></h4>
+                <h4>Cart <span class="price" style="color: var(--text_color)"><i class="fa fa-shopping-cart"></i> <b id="cartNum"></b></span></h4>
                 <table id="userCart"></table>
                 <hr>
-                <p>Total <span class="price" style="color: var(--text_color)"><b id="totalPrice">$0</b></span></p>
+                <p>Total <span class="price" style="color: var(--text_color)"><b id="totalPrice">-</b></span></p>
                 </div>
             </div>
 </div>

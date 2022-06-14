@@ -33,37 +33,40 @@ async function checkoutCart() {
 }
 async function parseOrder() {
     orderList = JSON.parse(sessionStorage.getItem('cart'));
+    
+    if (orderList) {
+        document.getElementById("cartNum").innerHTML = orderList.length
+        let total = 0;
 
-    document.getElementById("cartNum").innerHTML = orderList.length
-    let total = 0;
+        orderList.forEach(element => {
+            const outerElement = document.createElement('tr');
+            const innerElement = document.createElement('td');
+            const elmnt = document.createElement('a');
 
-    orderList.forEach(element => {
-        const outerElement = document.createElement('tr');
-        const innerElement = document.createElement('td');
-        const elmnt = document.createElement('a');
+            elmnt.setAttribute('id', 'cartItems');
+            elmnt.setAttribute('href', `displayproduct.html?pID=${element.productId}`);
+            elmnt.innerHTML = `${element.name} x${element.quantity}`
 
-        elmnt.setAttribute('id', 'cartItems');
-        elmnt.setAttribute('href', `displayproduct.html?pID=${element.productId}`);
-        elmnt.innerHTML = `${element.name} x${element.quantity}`
+            const price = document.createElement('span')
+            price.innerHTML = `$${element.price * element.quantity}`
 
-        const price = document.createElement('span')
-        price.innerHTML = `$${element.price * element.quantity}`
+            total += element.price * element.quantity
 
-        total += element.price * element.quantity
-
-        const cart = document.getElementById('userCart');
-        cart.appendChild(outerElement);
-        outerElement.appendChild(innerElement);
-        innerElement.appendChild(elmnt);
-        innerElement.appendChild(price);
-        //elmnt.appendChild(quant);
-    });
-
-    document.getElementById("totalPrice").innerHTML = `$${total}`
+            const cart = document.getElementById('userCart');
+            cart.appendChild(outerElement);
+            outerElement.appendChild(innerElement);
+            innerElement.appendChild(elmnt);
+            innerElement.appendChild(price);
+            //elmnt.appendChild(quant);
+        });
+        document.getElementById("totalPrice").innerHTML = `$${total}`
+    } else {
+        document.getElementById('userCart').innerHTML = "No items currently in Cart"
+    }
 }
 
 async function checkoutParse() {
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('userdata'));
     if (user) {
         document.getElementById('fName').value = user.firstName;
         document.getElementById('lName').value = user.lastName;
@@ -101,7 +104,7 @@ async function getGuestInfo() {
   const email = document.getElementById('email').value;
   let currentGuest = guestBody.find(user => user.email === email);
   console.log(currentGuest);
-  sessionStorage.setItem('user', JSON.stringify(currentGuest));
+  sessionStorage.setItem('userdata', JSON.stringify(currentGuest));
   checkoutParse();
 }
 
@@ -119,7 +122,7 @@ async function checkout() {
     }
 
     let address = JSON.parse(sessionStorage.getItem('userAddress'));
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    const user = JSON.parse(sessionStorage.getItem('userdata'));
     const orderList = JSON.parse(sessionStorage.getItem('cart'))
     if (!address) {
         const userAddressData = {
@@ -157,7 +160,7 @@ async function checkout() {
     for (element of orderList) {
         const orderDetailData =  {
             oID: newOrder.oID,
-            pID: element.p_id,
+            pID: element.productId,
             quantity: element.quantity
         };
 
@@ -175,7 +178,8 @@ async function checkout() {
             body: JSON.stringify({stock: element.quantity})
         }
 
-        const productResponse = await fetch(`http://localhost:7000/products/${element.p_id}`, productOption)
+        const productResponse = await fetch(`http://localhost:7000/products/${element.productId}`, productOption)
+        sessionStorage.removeItem("cart")
     }
     
     alert("Successfully Checked out!");
