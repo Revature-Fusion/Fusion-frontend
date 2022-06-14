@@ -22,7 +22,7 @@ nav.appendChild(indexLI);
 if (isLoggedin) {
     let ordersLI = document.createElement('li');
     let ordersAnchor = document.createElement('a');
-    ordersAnchor.setAttribute('href', 'myorders.html');
+    ordersAnchor.setAttribute('href', 'view_order.html');
     ordersAnchor.innerHTML = 'My Orders';
     ordersLI.appendChild(ordersAnchor);
     nav.appendChild(ordersLI);
@@ -57,7 +57,7 @@ if (isLoggedin) {
 
 let cartLI = document.createElement('li');
 let cartAnchor = document.createElement('a');
-cartAnchor.setAttribute('href', 'cart.html');
+cartAnchor.setAttribute('href', 'checkout.html');
 cartAnchor.innerHTML = '<i class="bi bi-cart-fill"></i> Cart';
 cartLI.appendChild(cartAnchor);
 nav.appendChild(cartLI);
@@ -84,25 +84,4 @@ if (isLoggedin) {
 }
 loginLI.appendChild(loginAnchor);
 nav.appendChild(loginLI);
-
-
-
-
-
-
-
-// nav.innerHTML = 
-//     `<li><a href="index.html">Home</a></li>
-//     <li><a href="#">My Orders</a></li>
-//     <li class="whitespace"> <!-- TAKE UP ALL REMAINING SPACE --> </li>
-//     <li><a href="cart.html"><i class="bi bi-cart-fill"></i> Cart</a></li>
-//     <li><a href="login.html"><i class="bi bi-person-fill"></i> Login/Register</a></li>`;
-
-    //index.html = display products (list)
-    //login.html = login links to the register.html and can redirect(button) to the register.html and myorders.html
-    //register.html = register
-    //displayproduct.html = display one product link from index.html page
-    //cart.html = cart. links to the checkout.html
-    //checkout.html = checkout
-    //myorders.html = view past orders (My Orders)
 
