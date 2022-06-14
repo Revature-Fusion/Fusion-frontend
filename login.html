@@ -62,9 +62,11 @@
 
         const body = await httpResponse.json();
 
-        window.location.reload();
-        document.location.href = "index.html";
+        console.log(body);
+
+        // window.location.reload();
         sessionStorage.setItem('userdata', JSON.stringify(body))
+        document.location.href = "index.html";
     }
 
 
